@@ -1,14 +1,9 @@
-// Just a simples test using the most basic
-//  features at Node.js
+const request = require("request");
 
-console.log("Starting");
+const url =
+  "http://api.weatherstack.com/current?access_key=be0d617236c0e7dd1c5bb4bd097fa5fd&query=37.8267,-122.4233";
 
-setTimeout(() => {
-  console.log("Two second ");
-}, 2000);
-
-setTimeout(() => {
-  console.log("Zero seconds");
-}, 0);
-
-console.log("Finishing up");
+request({ url: url }, (error, response) => {
+  const data = JSON.parse(response.body);
+  console.log(data.current);
+});
